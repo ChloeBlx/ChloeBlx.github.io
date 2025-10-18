@@ -397,5 +397,87 @@
 					$window.on('load', function() {
 						$main._show(location.hash.substr(1), true);
 					});
+					
+					
+		// JavaScript for handling pin clicks and popups
+document.addEventListener('DOMContentLoaded', function() {
+    // Luxembourg
+    document.getElementById('luxembourg-pin').addEventListener('click', function() {
+        showPopup('luxembourg-popup', this);
+    });
+    
+    // Netherlands
+    document.getElementById('netherlands-pin').addEventListener('click', function() {
+        showPopup('netherlands-popup', this);
+    });
+    
+    // France
+    document.getElementById('france-pin').addEventListener('click', function() {
+        showPopup('france-popup', this);
+    });
+    
+    // Italy
+    document.getElementById('italy-pin').addEventListener('click', function() {
+        showPopup('italy-popup', this);
+    });
+    
+    // Quebec
+    document.getElementById('quebec-pin').addEventListener('click', function() {
+        showPopup('quebec-popup', this);
+    });
+    
+    // Close buttons
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const popup = this.closest('.popup');
+            closePopup(popup.id);
+        });
+    });
+    
+    // Close popups when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.location-pin') && !event.target.closest('.popup')) {
+            closeAllPopups();
+        }
+    });
+});
+
+function showPopup(popupId, pinElement) {
+    // Close all popups first
+    closeAllPopups();
+    
+    // Get the popup element
+    const popup = document.getElementById(popupId);
+    
+    // Position the popup near the pin
+    const pinRect = pinElement.getBoundingClientRect();
+    const mapDiv = document.querySelector('.mapdiv');
+    const mapRect = mapDiv.getBoundingClientRect();
+    
+    // Calculate position relative to the map
+    const pinX = pinRect.left - mapRect.left;
+    const pinY = pinRect.top - mapRect.top;
+    
+    // Set popup position
+    popup.style.left = (pinX + 30) + 'px';
+    popup.style.top = (pinY - 50) + 'px';
+    
+    // Show the popup
+    popup.style.display = 'block';
+}
+
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
+
+function closeAllPopups() {
+    const popups = document.querySelectorAll('.popup');
+    popups.forEach(popup => {
+        popup.style.display = 'none';
+    });
+}
+
+
 
 })(jQuery);

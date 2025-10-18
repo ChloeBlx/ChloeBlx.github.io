@@ -1614,6 +1614,76 @@ body.is-article-visible #bg:after {
 			opacity: 0;
 		}
 		
+
+/* map*/ 
+
+.mapdiv {
+  
+width: 100%;
+}
+
+.mapdiv path {
+  stroke: #fff0f5; /* couleur des frontières*/ 
+  stroke-width: 2px;
+}
+		
+		
+.location-pin {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.location-pin:hover {
+    transform: scale(1.2);
+}
+
+.pin-icon {
+    font-size: 18px;
+    color: #e74c3c;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.popup h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.popup p {
+    margin-bottom: 0;
+    color: #34495e;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #7f8c8d;
+    font-size: 18px;
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+}
+		
+		
 		
 		
 /*PHOTO CIRCLE PAGE 1*/ 
@@ -1639,126 +1709,4 @@ body.is-article-visible #bg:after {
 }
  
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-
-
-
-<style>
-    /* Style the map container to fit your layout */
-   #map { 
-    height: 400px;
-    width: 100%;
-    background: #1a1a1a;
-    border-radius: 5px;
-    margin: 2.5rem 0; /* Match the .image.main margins */
-    display: block;
-}
-</style>
-
-<style>
-/* Fix for map container */
-#map {
-    height: 400px;
-    width: 100%;
-    background: #1a1a1a;
-    border-radius: 5px;
-    margin: 2.5rem 0;
-    position: relative;
-    z-index: 1;
-}
-
-/* Remove any potential overlays */
-#map:before {
-    display: none !important;
-}
-
-/* Leaflet specific styles */
-.leaflet-container {
-    background: #1a1a1a;
-    font-family: "Source Sans Pro", sans-serif;
-}
-
-.leaflet-popup-content {
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.leaflet-popup-content-wrapper {
-    background: #2d2d2d;
-    color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-}
-
-.leaflet-popup-tip {
-    background: #2d2d2d;
-}
-</style>
-
-<script>
-// Wait for the page to fully load
-window.addEventListener('load', function() {
-    console.log('Page loaded, initializing map...');
-    
-    // Check if map container exists
-    const mapContainer = document.getElementById('map');
-    if (!mapContainer) {
-        console.error('Map container not found!');
-        return;
-    }
-    console.log('Map container found:', mapContainer);
-    
-    // Initialize map
-    const map = L.map('map').setView([20, 0], 2);
-    console.log('Map initialized:', map);
-    
-    // Add tile layer
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-    }).addTo(map);
-    
-    console.log('Tile layer added');
-    
-    // Location markers
-    const locations = [
-        { name: "Marseille, France", coords: [43.2965, 5.3698], icon: '🏠' },
-        { name: "Esch-sur-Alzette, Luxembourg", coords: [49.5008, 5.9861], icon: '🎓' },
-        { name: "The Hague, Netherlands", coords: [52.0705, 4.3007], icon: '🏡' },
-        { name: "Groningen, Netherlands", coords: [53.2194, 6.5665], icon: '📚' },
-        { name: "Venice, Italy", coords: [45.4408, 12.3155], icon: '🎓' },
-        { name: "Quebec City, Canada", coords: [46.8139, -71.2080], icon: '✈️' }
-    ];
-    
-    locations.forEach(location => {
-        let popupContent = `<strong>${location.name}</strong>`;
-        
-        if (location.name === "Marseille, France") {
-            popupContent += "<br>Where I was born";
-        } else if (location.name === "The Hague, Netherlands") {
-            popupContent += "<br>The place that feels like my home. I completed my secondary education at the International School of the Hague, and graduated in 2020.";
-        } else if (location.name === "Venice, Italy") {
-            popupContent += "<br>2022 - 2024: Completed the second half of my double bachelor degree, and graduated with a bachelor in Philosophy, International relations and Economics with a final grade of 109/110.";
-        } else if (location.name === "Esch-sur-Alzette, Luxembourg") {
-            popupContent += "<br>2024 - 2026: Currently enrolled in the Master in Legislative studies at the University of Luxembourg.";
-        } else if (location.name === "Groningen, Netherlands") {
-            popupContent += "<br>2020 - 2022: First half of my double bachelor degree at University of Groningen";
-        } else if (location.name === "Quebec City, Canada") {
-            popupContent += "<br>September 2025 - December 2025: Academic exchange at Laval University";
-        }
-        
-        const marker = L.marker(location.coords).addTo(map)
-            .bindPopup(`<div style="padding: 8px;">${location.icon} ${popupContent}</div>`);
-        
-        marker.on('mouseover', function() {
-            this.openPopup();
-        });
-    });
-    
-    console.log('Markers added');
-});
-</script>
 
