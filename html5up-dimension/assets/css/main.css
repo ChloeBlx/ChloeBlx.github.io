@@ -174,7 +174,7 @@ input, select, textarea {
 		margin: 0 0 2rem 0;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h3, h4, h5, h6 {
 		color:  #000000;
 		font-weight: 600;
 		line-height: 1.5;
@@ -182,7 +182,14 @@ input, select, textarea {
 		text-transform: uppercase;
 		letter-spacing: 0.2rem;
 	}
-
+h2{
+		color:  #d63384;
+		font-weight: 600;
+		line-height: 1.5;
+		margin: 0 0 1rem 0;
+		text-transform: uppercase;
+		letter-spacing: 0.2rem;
+	}
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			color: inherit;
 			text-decoration: none;
@@ -299,6 +306,10 @@ input, select, textarea {
 	.align-right {
 		text-align: right;
 	}
+	
+	.align-justify {
+    text-align: justify; 
+}
 
 /* Form */
 
@@ -703,6 +714,47 @@ input, select, textarea {
 			.image.main img {
 				width: 100%;
 			}
+			
+.image.small {
+    max-width: 50%; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 1. Container: Enables row layout and spacing */
+.gallery-row {
+    display: flex;             /* Makes the children line up in a row */
+    justify-content: space-around; /* Adds space between the columns */
+    gap: 20px;                 /* Adds space between the columns (modern way) */
+    flex-wrap: wrap;           /* Allows images to wrap to the next line on small screens */
+    margin: 2rem 0;
+}
+
+/* 2. Figure: Each picture/caption block */
+figure {
+    /* Allows the figure to grow/shrink, but sets a minimum width */
+    flex: 1 1 250px;           /* grow shrink basis-width */
+    margin: 0;                 /* Reset default margins */
+    text-align: center;        /* Center the image and caption */
+}
+
+/* 3. Image: Makes the image fill its figure and stay responsive */
+figure img {
+    max-width: 100%;           /* Ensures the image doesn't overflow the figure */
+    height: auto;              /* Maintains image aspect ratio */
+    display: block;            /* Prevents extra space under the image */
+    margin-bottom: 0.5rem;     /* Space between image and caption */
+    /* Add object-fit if you want fixed-height thumbnails, e.g.: */
+    /* height: 150px; */
+    /* object-fit: cover; */
+}
+
+/* 4. Caption: Style the text underneath */
+figcaption {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #555; /* Use a color that suits your theme */
+}
 
 		@media screen and (max-width: 736px) {
 
@@ -899,6 +951,7 @@ input, select, textarea {
 		cursor: default;
 		list-style: none;
 		padding-left: 0;
+		text-align: center;
 	}
 
 		ul.icons li {
