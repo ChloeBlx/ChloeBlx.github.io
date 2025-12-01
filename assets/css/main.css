@@ -1760,6 +1760,16 @@ width: 100%;
   border-radius: 50%;     /* Ensures image itself is circular */
   display: block;
 }
- 
+ .languages-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to move to the next line */
+  gap: 20px; /* Optional spacing between items */
+}
+
+.languages-container p {
+  flex: 0 0 48%; /* Each item takes roughly half the container width */
+  margin: 0; /* Optional: remove extra margin */
+}
+
 
 

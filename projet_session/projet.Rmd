@@ -1,0 +1,102 @@
+---
+title: 'Traitement médiatique du procès de Nicolas Sarkozy.'
+author: "Chloé Balix"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document:
+    latex_engine: xelatex
+fontsize: 12pt
+mainfont: Times New Roman
+---
+
+# 1. Question de recherche et hypothèse
+
+## Question de recherche
+>Quelle a été la visibilité médiatique de Nicolas Sarkozy à la télévision française au cours de l’année 2025? 
+
+## Revue de la littérature
+_Ce projet faisant partie d'un plus grand projet de mémoire, la revue de littérature présente également le cadre plus général du cadrage médiatique._
+
+>1. Le cadrage médiatique des scandales politiques
+
+>La notion de cadrage médiatique (media framing) permet de comprendre comment les médias sélectionnent et organisent l’information afin de mettre en avant certains aspects d’un événement tout en en occultant d’autres (Entman, 1993). Dans le contexte des scandales politiques, les cadres médiatiques jouent un rôle central dans la construction de la perception publique, influençant les jugements moraux et les opinions politiques (von Sikorski & Knoll, 2019). La littérature distingue notamment deux types de cadres dominants : le « attack frame », qui met l’accent sur les fautes, la corruption ou l’immoralité, et le « defense frame », qui relativise les accusations, met en doute la légitimité du procès ou présente les acteurs comme victimes d’un acharnement politique (von Sikorski & Knoll, 2019).
+
+>2. Cadres et moralisation dans la couverture française
+
+>Dans le contexte français, Wickberg (2016) a analysé un corpus de 307 articles de presse traitant de la corruption et a montré que les médias ont tendance à présenter la corruption comme un problème individuel, centré sur des figures personnelles plutôt que sur des défaillances institutionnelles. Ce « moral framing » conduit à personnaliser la responsabilité et à dramatiser les scandales, en accentuant la dimension éthique et morale de l’affaire plutôt que ses implications structurelles. De même, Schauseil (2019) souligne le rôle normatif des médias dans la dénonciation de la corruption, tout en mettant en évidence leurs limites : focalisation sur l’individu plutôt que sur le système, et traitement parfois partial ou simplifié des affaires.
+
+> 3. Effets cognitifs et émotionnels des frames
+
+>Les cadres médiatiques ont également un impact sur la perception et le jugement du public. Kepplinger, Geiß et Siebert (2012) montrent que la manière dont un scandale est présenté influence non seulement la compréhension cognitive, mais aussi la réaction émotionnelle et morale des citoyens. Ainsi, la couverture médiatique d’un procès politique peut polariser les opinions et renforcer ou diminuer la légitimité perçue des acteurs impliqués.
+
+>4. Approches contemporaines et automatisées
+
+>Les méthodes traditionnelles d’analyse de contenu, basées sur le codage manuel, sont aujourd’hui complétées par des techniques automatisées permettant de traiter de larges corpus médiatiques et d’identifier les cadres dominants sur de longues périodes (Otmakhova & Frermann, 2025). Ces approches permettent d’examiner la dynamique des frames et la manière dont les récits médiatiques construisent des arcs narratifs autour des procès ou scandales politiques, offrant ainsi une lecture plus systématique et nuancée de la couverture médiatique.
+
+>5. Pertinence pour le cas de Nicolas Sarkozy (2025)
+
+>L’application des recherches sur le cadrage médiatique et les scandales politiques au procès 2025 de Nicolas Sarkozy montre que la couverture médiatique peut être approchée, dans un premier temps, par la mesure de la fréquence des mentions du nom de l’ancien président à la télévision. La littérature indique que les médias construisent des récits autour de scandales politiques, mettant en avant certaines dimensions (corruption, immoralité, contestation du procès) et influençant la perception publique (von Sikorski & Knoll, 2019; Wickberg, 2016). 
+Dans ce projet, plutôt que d’analyser directement le contenu et le ton des articles ou émissions, la fréquence des mentions servira d’indicateur exploratoire de l’attention médiatique. Cette approche permet de repérer les périodes où le procès a suscité un pic de couverture et d’identifier les différences de visibilité entre chaînes, offrant ainsi une lecture quantitative préliminaire de la médiatisation de l’événement.
+
+## Hypothèse
+> Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement et diffère selon le type de chaîne (généraliste vs info continue).
+
+## Outils utilisés pour la recherche bibliographique
+- **Google Scholar / Eureka** : pour identifier des articles académiques et de médias sur le cadrage médiatique et les scandales politiques. Google scholar a principalement été utilisé pour trouver des articles plus théoriques, alors que Eureka a permis de collecter des articles de divers média. 
+
+- **Zotero** :L'utilisation de Zotéro a permis d'organiser les sources et de les annoter. 
+
+- _Justification : Bien que seulement 5 articles est été présenté dans la revue de littérature, google scholar et Eureka, 
+ ont  permis de constituer une base solide de sources fiables et pertinentes pour le cadrage théorique,qui seront utilisé pour le mémoire._
+
+# 2. Collecte de données
+
+## Outil choisi pour la collecte
+>  Outil de collecte
+Pour ce projet, les données ont été collectées à partir de l’outil archives INA, qui permet,, grâce à l'utilisation de l'I de collecter des données sur la diffusion de mots-clés à la télévision française. Le mot-clé principal utilisé pour cette collecte est « Nicolas Sarkozy ».
+Le choix de cet outil s'est fait pour sa capacité à :
+
+> * **rechercher automatiquement les mentions** du nom sur plusieurs chaînes et émissions, automatisé par l'IA ;
+> * **fournir un historique temporel des mentions** sur une période donnée;
+> * **la transparence du site** sur la méthodologie et l'analyse des données
+
+## Méthodologie
+>* Dertimination du type de média (info en continues, radio, journal télévisé...)
+>* Détermination des mots clé à utilisés 
+>* Vérification de la disponibilité des données
+>* Choix de la temporalité des données (30jours, 6 mois, 1 ans, toutes les données disponibles...)
+>* Collecte des donnée quantitatives _(afin de pouvoir télécharger les données il faut demander un accès au corpus INA, n'ayant pas reçu de réponse à ce jour, les données ont été rentrée manuellment dans un fichier.)_
+>* Analyse des données PAR 
+
+# 3. Analyse et visualisation des données
+# 3. Analyse et visualisation des données
+
+```{r graph_mentions_barres_color, echo=TRUE, message=FALSE, warning=FALSE}
+# Charger le package ggplot2
+library(ggplot2)
+
+# Lire le fichier CSV
+data <- read.csv("base_de_donnée_sarkozy_journal.csv", stringsAsFactors = FALSE)
+
+# Ordre chronologique des mois
+data$Mois <- factor(data$Mois, levels = c("Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+                                          "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"))
+
+# Définir des couleurs personnalisées pour chaque chaîne
+# Modifie ou ajoute des chaînes selon ton fichier
+couleurs <- c("TF1" = "#1f77b4", "France 2" = "#ff7f0e", "M6" = "#2ca02c")
+
+# Graphique en barres groupées avec couleurs par chaîne
+ggplot(data, aes(x = Mois, y = Mentions, fill = Chaine)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = couleurs) +
+  theme_minimal() +
+  labs(title = "Mentions par mois par chaîne télé",
+       x = "Mois",
+       y = "Nombre de mentions",
+       fill = "Chaîne") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
