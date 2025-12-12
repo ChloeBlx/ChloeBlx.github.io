@@ -1,15 +1,21 @@
 ---
-title: 'Traitement médiatique du procès de Nicolas Sarkozy.'
+title: "Traitement médiatique du procès de Nicolas Sarkozy"
 author: "Chloé Balix"
 date: "`r Sys.Date()`"
 output:
   html_document:
     df_print: paged
+    toc: true
+    toc_depth: 3
+    number_sections: true
   pdf_document:
     latex_engine: xelatex
+    toc: true
 fontsize: 12pt
-mainfont: Times New Roman
+mainfont: "Times New Roman"
+geometry: margin=2.5cm
 ---
+
 
 # 1. Question de recherche et hypothèse
 
@@ -27,7 +33,7 @@ _Ce projet faisant partie d'un plus grand projet de mémoire, la revue de litté
 
 >Dans le contexte français, Wickberg (2016) a analysé un corpus de 307 articles de presse traitant de la corruption et a montré que les médias ont tendance à présenter la corruption comme un problème individuel, centré sur des figures personnelles plutôt que sur des défaillances institutionnelles. Ce « moral framing » conduit à personnaliser la responsabilité et à dramatiser les scandales, en accentuant la dimension éthique et morale de l’affaire plutôt que ses implications structurelles. De même, Schauseil (2019) souligne le rôle normatif des médias dans la dénonciation de la corruption, tout en mettant en évidence leurs limites : focalisation sur l’individu plutôt que sur le système, et traitement parfois partial ou simplifié des affaires.
 
-> 3. Effets cognitifs et émotionnels des frames
+>3. Effets cognitifs et émotionnels des frames
 
 >Les cadres médiatiques ont également un impact sur la perception et le jugement du public. Kepplinger, Geiß et Siebert (2012) montrent que la manière dont un scandale est présenté influence non seulement la compréhension cognitive, mais aussi la réaction émotionnelle et morale des citoyens. Ainsi, la couverture médiatique d’un procès politique peut polariser les opinions et renforcer ou diminuer la légitimité perçue des acteurs impliqués.
 
@@ -41,20 +47,19 @@ _Ce projet faisant partie d'un plus grand projet de mémoire, la revue de litté
 Dans ce projet, plutôt que d’analyser directement le contenu et le ton des articles ou émissions, la fréquence des mentions servira d’indicateur exploratoire de l’attention médiatique. Cette approche permet de repérer les périodes où le procès a suscité un pic de couverture et d’identifier les différences de visibilité entre chaînes, offrant ainsi une lecture quantitative préliminaire de la médiatisation de l’événement.
 
 ## Hypothèse
-> Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement et diffère selon le type de chaîne (généraliste vs info continue).
+> Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
 
 ## Outils utilisés pour la recherche bibliographique
 - **Google Scholar / Eureka** : pour identifier des articles académiques et de médias sur le cadrage médiatique et les scandales politiques. Google scholar a principalement été utilisé pour trouver des articles plus théoriques, alors que Eureka a permis de collecter des articles de divers média. 
 
 - **Zotero** :L'utilisation de Zotéro a permis d'organiser les sources et de les annoter. 
 
-- _Justification : Bien que seulement 5 articles est été présenté dans la revue de littérature, google scholar et Eureka, 
- ont  permis de constituer une base solide de sources fiables et pertinentes pour le cadrage théorique,qui seront utilisé pour le mémoire._
+- _Justification : Bien que seulement 5 articles est été présenté dans la revue de littérature, google scholar et Eureka, ont permis de constituer une base solide de sources fiables et pertinentes pour le cadrage théorique,qui seront utilisé pour le mémoire._
 
 # 2. Collecte de données
 
 ## Outil choisi pour la collecte
->  Outil de collecte
+> Outil de collecte
 Pour ce projet, les données ont été collectées à partir de l’outil archives INA, qui permet,, grâce à l'utilisation de l'I de collecter des données sur la diffusion de mots-clés à la télévision française. Le mot-clé principal utilisé pour cette collecte est « Nicolas Sarkozy ».
 Le choix de cet outil s'est fait pour sa capacité à :
 
@@ -67,36 +72,172 @@ Le choix de cet outil s'est fait pour sa capacité à :
 >* Détermination des mots clé à utilisés 
 >* Vérification de la disponibilité des données
 >* Choix de la temporalité des données (30jours, 6 mois, 1 ans, toutes les données disponibles...)
->* Collecte des donnée quantitatives _(afin de pouvoir télécharger les données il faut demander un accès au corpus INA, n'ayant pas reçu de réponse à ce jour, les données ont été rentrée manuellment dans un fichier.)_
+>* Collecte des donnée quantitatives _(afin de pouvoir télécharger les données il faut demander un accès au corpus INA, n'ayant pas reçu de réponse à ce jour, les données ont été rentrée manuellement dans un fichier.)_
 >* Analyse des données PAR 
 
+
 # 3. Analyse et visualisation des données
-# 3. Analyse et visualisation des données
+>3.1 Visualisation des données
+```{r preparation_et_barres, echo=TRUE, message=FALSE, warning=FALSE, fig.height=5, fig.width=8}
+# Chargement des librairies nécessaires (Assurez-vous qu'elles sont installées manuellement au préalable dans votre console R)
+library(tidyverse)
+library(lubridate)
 
-```{r graph_mentions_barres_color, echo=TRUE, message=FALSE, warning=FALSE}
-# Charger le package ggplot2
-library(ggplot2)
+# --- 1. Création du tableau R (tibble) à partir des données extraites du PDF ---
+data_mentions <- tibble(
+  Mois_Abr = rep(c("nov. 24", "déc. 24", "janv. 25", "févr. 25", "mars 25", "avr. 25", 
+                   "mai 25", "juin 25", "juil. 25", "août 25", "sept. 25", "oct. 25"), 4), 
+  Chaine = rep(c("Arte", "France 2", "M6", "TF1"), each = 12),
+  Mention = c(
+    # Arte (nov 24 - oct 25)
+    2, 9, 12, 0, 2, 0, 6, 1, 6, 6, 16, 11,
+    # France 2 (nov 24 - oct 25)
+    24, 33, 41, 24, 26, 38, 19, 15, 31, 9, 96, 61,
+    # M6 (nov 24 - oct 25)
+    13, 14, 23, 4, 10, 12, 10, 8, 7, 5, 30, 58,
+    # TF1 (nov 24 - oct 25)
+    41, 25, 30, 18, 20, 23, 33, 24, 21, 27, 56, 34
+  )
+) %>%
+  # Conversion de la colonne Mois en format Date 
+  mutate(
+    Date = lubridate::parse_date_time(Mois_Abr, orders = "b y"), 
+    Chaine = as.factor(Chaine)
+  ) %>%
+  select(Date, Chaine, Mention) 
 
-# Lire le fichier CSV
-data <- read.csv("base_de_donnée_sarkozy_journal.csv", stringsAsFactors = FALSE)
+# --- 2. Création du graphique en barres (TOTAL Mentions par Chaîne) ---
+graphique_barres_total <- data_mentions %>%
+  # Calculer la somme des mentions pour chaque chaîne
+  group_by(Chaine) %>%
+  summarise(Total_Mentions = sum(Mention)) %>%
+  
+  # Création du graphique
+  ggplot(aes(x = Chaine, y = Total_Mentions, fill = Chaine)) +
+  geom_col(width = 0.7) + 
+  
+  # Ajout des valeurs au-dessus des barres
+  geom_text(aes(label = Total_Mentions), vjust = -0.5, color = "black", fontface = "bold") +
+  
+  # Étiquettes et titre
+  labs(
+    title = "Total des Mentions de Nicolas Sarkozy par Chaîne (Nov 2024 - Oct 2025)",
+    x = "Chaîne TV",
+    y = "Total des Mentions",
+    fill = "Chaîne TV"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
 
-# Ordre chronologique des mois
-data$Mois <- factor(data$Mois, levels = c("Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-                                          "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"))
+# Afficher le graphique en barres
+print(graphique_barres_total) 
 
-# Définir des couleurs personnalisées pour chaque chaîne
-# Modifie ou ajoute des chaînes selon ton fichier
-couleurs <- c("TF1" = "#1f77b4", "France 2" = "#ff7f0e", "M6" = "#2ca02c")
+```{r graphiques_individuels_par_chaine, echo=TRUE, message=FALSE, warning=FALSE, fig.height=4, fig.width=10}
+# Assurez-vous que le tableau 'data_mentions' a été créé dans un chunk précédent.
 
-# Graphique en barres groupées avec couleurs par chaîne
-ggplot(data, aes(x = Mois, y = Mentions, fill = Chaine)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  scale_fill_manual(values = couleurs) +
-  theme_minimal() +
-  labs(title = "Mentions par mois par chaîne télé",
-       x = "Mois",
-       y = "Nombre de mentions",
-       fill = "Chaîne") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+library(tidyverse)
+library(lubridate) # Chargé à nouveau pour la clarté, bien qu'il soit dans tidyverse
+
+# --- Fonction de création de graphique pour une seule chaîne ---
+creer_graphique_chaine <- function(data, nom_chaine) {
+  data %>%
+    filter(Chaine == nom_chaine) %>%
+    
+    ggplot(aes(x = Date, y = Mention)) +
+    
+    # Lignes et points simples
+    geom_line(color = "darkblue", linewidth = 1) + 
+    geom_point(color = "darkblue", size = 3) +
+    
+    # Étiquettes des points pour la précision
+    geom_text(aes(label = Mention), vjust = -1.5, color = "darkblue", size = 3.5) +
+    
+    # Titre dynamique et étiquettes
+    labs(
+      title = paste("Évolution Mensuelle des Mentions sur", nom_chaine),
+      x = "Mois",
+      y = "Nombre de Mentions"
+    ) +
+    
+    # Thème et ajustements pour l'axe des dates
+    theme_minimal() +
+    scale_x_date(date_breaks = "1 month", date_labels = "%Y-%m") + 
+    theme(
+      plot.title = element_text(hjust = 0.5, face = "bold", size = 14),
+      axis.text.x = element_text(angle = 45, hjust = 1)
+    )
+}
+
+# --- Création et affichage des quatre graphiques ---
+
+# 1. ARTE
+graphique_arte <- creer_graphique_chaine(data_mentions, "Arte")
+print(graphique_arte)
+
+# 2. FRANCE 2
+graphique_france2 <- creer_graphique_chaine(data_mentions, "France 2")
+print(graphique_france2)
+
+# 3. M6
+graphique_m6 <- creer_graphique_chaine(data_mentions, "M6")
+print(graphique_m6)
+
+# 4. TF1
+graphique_tf1 <- creer_graphique_chaine(data_mentions, "TF1")
+print(graphique_tf1) 
+
+```{r tableau_pics_mentions, echo=TRUE, message=FALSE, warning=FALSE}
+# Assurez-vous que le tableau 'data_mentions' a été créé dans un chunk précédent.
+
+library(tidyverse)
+# Utilisation de la fonction 'month()' de lubridate pour afficher le nom complet du mois
+library(lubridate) 
+
+# Création du tableau récapitulatif des deux mois les plus actifs par chaîne
+tableau_pics <- data_mentions %>%
+  mutate(
+    Date = as.Date(Date),
+    Mois_Complet = format(Date, "%B %Y")
+  ) %>%
+  group_by(Chaine) %>%
+  slice_max(Mention, n = 1, with_ties = FALSE) %>%
+  arrange(Chaine, desc(Mention)) %>%
+  select(
+    `Chaîne TV` = Chaine,
+    `Mois du Pic` = Mois_Complet,
+    `Nombre de Mentions` = Mention
+  )
+
+# Afficher le tableau
+tableau_pics 
+```
+ 
+#Analyse des données
+>3.2 Analyse des données 
+
+>Cette section vise à interpréter les visualisations obtenues pour évaluer la validité de l'hypothèse de recherche : Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
+
+**Répartition Générale de la Couverture**
+
+>L'analyse de la répartition totale des mentions (voir Graphique 3.1) révèle une forte disparité entre les chaînes.
+Dominance des Généralistes : Les chaînes généralistes et d'information (France 2, TF1) concentrent l'essentiel de la couverture médiatique de Nicolas Sarkozy sur la période. France 2 et TF1 totalisent à elles seules plus de 75% du nombre total de mentions, soulignant leur rôle central dans la médiatisation des affaires politiques majeures.Elles figurent aussi parmis les chaines les plus regardées. 
+
+>Faible Couverture d'Arte : Arte enregistre le plus faible nombre de mentions, ce qui est cohérent avec son mandat éditorial (culturel et européen) et son éloignement des actualités politiques quotidiennes et sensationnalistes.
+
+**Test de l'Hypothèse : Évolution Temporelle**
+
+>Le Graphique 3.2 (Évolution Mensuelle par Chaîne) permet de tester directement l'hypothèse d'une augmentation des mentions autour du procès de 2025.
+Augmentation en Période de Procès : L'hypothèse est très fortement confirmée. Le premièr jugement du procès à eu le 25 Septembre 2025. 
+La couverture médiatique est restée à un niveau relativement stable et modéré du début de la période (Novembre 2024) jusqu'en Août 2025. Une forte augmentation et simultanée entre les différents chaines des mentions se produit en Septembre 2025, ce qui coïncide logiquement avec la tenue du procès ou le prononcé d'un jugement important. Ce mois représente le pic absolu pour France 2 (96 mentions) et TF1 (56 mentions).
+
+>Différences par type de chaîne : Bienn que l'hypothèse d'une différence de réponse selon le type de chaîne n'est pas été posé, on peut observer des différence entre les chaînes, qui pourrait s'avérer intéressant d'approfondir dans de futur projet:
+Chaînes Généralistes (TF1 et France 2) : Ces chaînes montrent une réactivité immédiate et synchrone, enregistrant leur pic maximal en Septembre 2025, indiquant qu'elles ont couvert l'événement principal au moment où il se déroulait.
+  M6 : Bien qu'elle soit généraliste, M6 présente un pic décalé, avec son maximum en Octobre 2025 (58 mentions). Cela pourrait indiquer que M6 a privilégié la couverture des conséquences, des réactions post-jugement ou des analyses de fond plutôt que les reportages en direct de la salle d'audience.
+
+_Outils utilisés:_ 
+_* 1) Un fichier excel: pour les données collectée sur le site de l'INA. L'utilisation d'Excel a permis d'exporter le fichier en fichier cvs afin de l'utiliser avec R._
+_* 2) Tidyverse et ggplot: pour la création de graphique et la visulation des données. Ces package ont permis d'obtenir différentes visualisations, notemment graphique à bars, graphiques, et tableaux avec des legendes et couleur pour rendre les visualisations plus clairs. Bien que seulement trois visualisation est été réalisé dans le cadre de ce projet, les possibilités de visualisation des ces outils sont beaucoup plus large et polyvalente._
+_* 3) R: outils utilisé afin d'avoir accès aux packages ggplot, et tidyverse._ 
 
 
+>4. Discussion 
