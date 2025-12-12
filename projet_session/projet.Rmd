@@ -3,14 +3,14 @@ title: "Traitement médiatique du procès de Nicolas Sarkozy"
 author: "Chloé Balix"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
   html_document:
     df_print: paged
     toc: true
     toc_depth: 3
     number_sections: true
-  pdf_document:
-    latex_engine: xelatex
-    toc: true
 fontsize: 12pt
 mainfont: "Times New Roman"
 geometry: margin=2.5cm
@@ -20,64 +20,66 @@ geometry: margin=2.5cm
 # 1. Question de recherche et hypothèse
 
 ## Question de recherche
->Quelle a été la visibilité médiatique de Nicolas Sarkozy à la télévision française au cours de l’année 2025? 
+Quelle a été la visibilité médiatique de Nicolas Sarkozy à la télévision française au cours de l’année 2025? 
 
 ## Revue de la littérature
 _Ce projet faisant partie d'un plus grand projet de mémoire, la revue de littérature présente également le cadre plus général du cadrage médiatique._
 
->1. Le cadrage médiatique des scandales politiques
+1. Le cadrage médiatique des scandales politiques
 
->La notion de cadrage médiatique (media framing) permet de comprendre comment les médias sélectionnent et organisent l’information afin de mettre en avant certains aspects d’un événement tout en en occultant d’autres (Entman, 1993). Dans le contexte des scandales politiques, les cadres médiatiques jouent un rôle central dans la construction de la perception publique, influençant les jugements moraux et les opinions politiques (von Sikorski & Knoll, 2019). La littérature distingue notamment deux types de cadres dominants : le « attack frame », qui met l’accent sur les fautes, la corruption ou l’immoralité, et le « defense frame », qui relativise les accusations, met en doute la légitimité du procès ou présente les acteurs comme victimes d’un acharnement politique (von Sikorski & Knoll, 2019).
+La notion de cadrage médiatique (media framing) permet de comprendre comment les médias sélectionnent et organisent l’information afin de mettre en avant certains aspects d’un événement tout en en occultant d’autres (Entman, 1993). Dans le contexte des scandales politiques, les cadres médiatiques jouent un rôle central dans la construction de la perception publique, influençant les jugements moraux et les opinions politiques (von Sikorski & Knoll, 2019). La littérature distingue notamment deux types de cadres dominants : le « attack frame », qui met l’accent sur les fautes, la corruption ou l’immoralité, et le « defense frame », qui relativise les accusations, met en doute la légitimité du procès ou présente les acteurs comme victimes d’un acharnement politique (von Sikorski & Knoll, 2019).
 
->2. Cadres et moralisation dans la couverture française
+2. Cadres et moralisation dans la couverture française
 
->Dans le contexte français, Wickberg (2016) a analysé un corpus de 307 articles de presse traitant de la corruption et a montré que les médias ont tendance à présenter la corruption comme un problème individuel, centré sur des figures personnelles plutôt que sur des défaillances institutionnelles. Ce « moral framing » conduit à personnaliser la responsabilité et à dramatiser les scandales, en accentuant la dimension éthique et morale de l’affaire plutôt que ses implications structurelles. De même, Schauseil (2019) souligne le rôle normatif des médias dans la dénonciation de la corruption, tout en mettant en évidence leurs limites : focalisation sur l’individu plutôt que sur le système, et traitement parfois partial ou simplifié des affaires.
+Dans le contexte français, Wickberg (2016) a analysé un corpus de 307 articles de presse traitant de la corruption et a montré que les médias ont tendance à présenter la corruption comme un problème individuel, centré sur des figures personnelles plutôt que sur des défaillances institutionnelles. Ce « moral framing » conduit à personnaliser la responsabilité et à dramatiser les scandales, en accentuant la dimension éthique et morale de l’affaire plutôt que ses implications structurelles. De même, Schauseil (2019) souligne le rôle normatif des médias dans la dénonciation de la corruption, tout en mettant en évidence leurs limites : focalisation sur l’individu plutôt que sur le système, et traitement parfois partial ou simplifié des affaires.
 
->3. Effets cognitifs et émotionnels des frames
+3. Effets cognitifs et émotionnels des frames
 
->Les cadres médiatiques ont également un impact sur la perception et le jugement du public. Kepplinger, Geiß et Siebert (2012) montrent que la manière dont un scandale est présenté influence non seulement la compréhension cognitive, mais aussi la réaction émotionnelle et morale des citoyens. Ainsi, la couverture médiatique d’un procès politique peut polariser les opinions et renforcer ou diminuer la légitimité perçue des acteurs impliqués.
+Les cadres médiatiques ont également un impact sur la perception et le jugement du public. Kepplinger, Geiß et Siebert (2012) montrent que la manière dont un scandale est présenté influence non seulement la compréhension cognitive, mais aussi la réaction émotionnelle et morale des citoyens. Ainsi, la couverture médiatique d’un procès politique peut polariser les opinions et renforcer ou diminuer la légitimité perçue des acteurs impliqués.
 
->4. Approches contemporaines et automatisées
+4. Approches contemporaines et automatisées
 
->Les méthodes traditionnelles d’analyse de contenu, basées sur le codage manuel, sont aujourd’hui complétées par des techniques automatisées permettant de traiter de larges corpus médiatiques et d’identifier les cadres dominants sur de longues périodes (Otmakhova & Frermann, 2025). Ces approches permettent d’examiner la dynamique des frames et la manière dont les récits médiatiques construisent des arcs narratifs autour des procès ou scandales politiques, offrant ainsi une lecture plus systématique et nuancée de la couverture médiatique.
+Les méthodes traditionnelles d’analyse de contenu, basées sur le codage manuel, sont aujourd’hui complétées par des techniques automatisées permettant de traiter de larges corpus médiatiques et d’identifier les cadres dominants sur de longues périodes (Otmakhova & Frermann, 2025). Ces approches permettent d’examiner la dynamique des frames et la manière dont les récits médiatiques construisent des arcs narratifs autour des procès ou scandales politiques, offrant ainsi une lecture plus systématique et nuancée de la couverture médiatique.
 
->5. Pertinence pour le cas de Nicolas Sarkozy (2025)
+5. Pertinence pour le cas de Nicolas Sarkozy (2025)
 
->L’application des recherches sur le cadrage médiatique et les scandales politiques au procès 2025 de Nicolas Sarkozy montre que la couverture médiatique peut être approchée, dans un premier temps, par la mesure de la fréquence des mentions du nom de l’ancien président à la télévision. La littérature indique que les médias construisent des récits autour de scandales politiques, mettant en avant certaines dimensions (corruption, immoralité, contestation du procès) et influençant la perception publique (von Sikorski & Knoll, 2019; Wickberg, 2016). 
+L’application des recherches sur le cadrage médiatique et les scandales politiques au procès 2025 de Nicolas Sarkozy montre que la couverture médiatique peut être approchée, dans un premier temps, par la mesure de la fréquence des mentions du nom de l’ancien président à la télévision. La littérature indique que les médias construisent des récits autour de scandales politiques, mettant en avant certaines dimensions (corruption, immoralité, contestation du procès) et influençant la perception publique (von Sikorski & Knoll, 2019; Wickberg, 2016). 
 Dans ce projet, plutôt que d’analyser directement le contenu et le ton des articles ou émissions, la fréquence des mentions servira d’indicateur exploratoire de l’attention médiatique. Cette approche permet de repérer les périodes où le procès a suscité un pic de couverture et d’identifier les différences de visibilité entre chaînes, offrant ainsi une lecture quantitative préliminaire de la médiatisation de l’événement.
 
 ## Hypothèse
-> Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
+ Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
 
 ## Outils utilisés pour la recherche bibliographique
 - **Google Scholar / Eureka** : pour identifier des articles académiques et de médias sur le cadrage médiatique et les scandales politiques. Google scholar a principalement été utilisé pour trouver des articles plus théoriques, alors que Eureka a permis de collecter des articles de divers média. 
 
 - **Zotero** :L'utilisation de Zotéro a permis d'organiser les sources et de les annoter. 
 
+- **Anara AI**: Egalement utiliser pour la recherche bibliographique, et pour la lecture de certaines sources en utilisant la chat box pour clarifier certains points.
+
 - _Justification : Bien que seulement 5 articles est été présenté dans la revue de littérature, google scholar et Eureka, ont permis de constituer une base solide de sources fiables et pertinentes pour le cadrage théorique,qui seront utilisé pour le mémoire._
 
 # 2. Collecte de données
 
 ## Outil choisi pour la collecte
-> Outil de collecte
-Pour ce projet, les données ont été collectées à partir de l’outil archives INA, qui permet,, grâce à l'utilisation de l'I de collecter des données sur la diffusion de mots-clés à la télévision française. Le mot-clé principal utilisé pour cette collecte est « Nicolas Sarkozy ».
+ Outil de collecte
+Pour ce projet, les données ont été collectées à partir de l’outil archives INA, qui permet,grâce à l'utilisation de l'IA de collecter des données sur la diffusion de mots-clés à la télévision française. Le mot-clé principal utilisé pour cette collecte est « Nicolas Sarkozy ».
 Le choix de cet outil s'est fait pour sa capacité à :
 
-> * **rechercher automatiquement les mentions** du nom sur plusieurs chaînes et émissions, automatisé par l'IA ;
-> * **fournir un historique temporel des mentions** sur une période donnée;
-> * **la transparence du site** sur la méthodologie et l'analyse des données
+ * **rechercher automatiquement les mentions** du nom sur plusieurs chaînes et émissions, automatisé par l'IA ;
+* **fournir un historique temporel des mentions** sur une période donnée;
+* **la transparence du site** sur la méthodologie et l'analyse des données
 
 ## Méthodologie
->* Dertimination du type de média (info en continues, radio, journal télévisé...)
->* Détermination des mots clé à utilisés 
->* Vérification de la disponibilité des données
->* Choix de la temporalité des données (30jours, 6 mois, 1 ans, toutes les données disponibles...)
->* Collecte des donnée quantitatives _(afin de pouvoir télécharger les données il faut demander un accès au corpus INA, n'ayant pas reçu de réponse à ce jour, les données ont été rentrée manuellement dans un fichier.)_
->* Analyse des données PAR 
+* Dertimination du type de média (info en continues, radio, journal télévisé...)
+* Détermination des mots clé à utilisés 
+* Vérification de la disponibilité des données
+* Choix de la temporalité des données (30jours, 6 mois, 1 ans, toutes les données disponibles...)
+* Collecte des donnée quantitatives _(afin de pouvoir télécharger les données il faut demander un accès au corpus INA, n'ayant pas reçu de réponse à ce jour, les données ont été rentrée manuellement dans un fichier.)_
+>* Analyse des données avec R et création des visuels.
 
 
 # 3. Analyse et visualisation des données
->3.1 Visualisation des données
+3.1 Visualisation des données
 ```{r preparation_et_barres, echo=TRUE, message=FALSE, warning=FALSE, fig.height=5, fig.width=8}
 # Chargement des librairies nécessaires (Assurez-vous qu'elles sont installées manuellement au préalable dans votre console R)
 library(tidyverse)
@@ -213,24 +215,24 @@ tableau_pics
 ```
  
 #Analyse des données
->3.2 Analyse des données 
+3.2 Analyse des données 
 
->Cette section vise à interpréter les visualisations obtenues pour évaluer la validité de l'hypothèse de recherche : Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
+Cette section vise à interpréter les visualisations obtenues pour évaluer la validité de l'hypothèse de recherche : Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
 
 **Répartition Générale de la Couverture**
 
->L'analyse de la répartition totale des mentions (voir Graphique 3.1) révèle une forte disparité entre les chaînes.
+L'analyse de la répartition totale des mentions (voir Graphique 3.1) révèle une forte disparité entre les chaînes.
 Dominance des Généralistes : Les chaînes généralistes et d'information (France 2, TF1) concentrent l'essentiel de la couverture médiatique de Nicolas Sarkozy sur la période. France 2 et TF1 totalisent à elles seules plus de 75% du nombre total de mentions, soulignant leur rôle central dans la médiatisation des affaires politiques majeures.Elles figurent aussi parmis les chaines les plus regardées. 
 
->Faible Couverture d'Arte : Arte enregistre le plus faible nombre de mentions, ce qui est cohérent avec son mandat éditorial (culturel et européen) et son éloignement des actualités politiques quotidiennes et sensationnalistes.
+Faible Couverture d'Arte : Arte enregistre le plus faible nombre de mentions, ce qui est cohérent avec son mandat éditorial (culturel et européen) et son éloignement des actualités politiques quotidiennes et sensationnalistes.
 
 **Test de l'Hypothèse : Évolution Temporelle**
 
->Le Graphique 3.2 (Évolution Mensuelle par Chaîne) permet de tester directement l'hypothèse d'une augmentation des mentions autour du procès de 2025.
+Le Graphique 3.2 (Évolution Mensuelle par Chaîne) permet de tester directement l'hypothèse d'une augmentation des mentions autour du procès de 2025.
 Augmentation en Période de Procès : L'hypothèse est très fortement confirmée. Le premièr jugement du procès à eu le 25 Septembre 2025. 
 La couverture médiatique est restée à un niveau relativement stable et modéré du début de la période (Novembre 2024) jusqu'en Août 2025. Une forte augmentation et simultanée entre les différents chaines des mentions se produit en Septembre 2025, ce qui coïncide logiquement avec la tenue du procès ou le prononcé d'un jugement important. Ce mois représente le pic absolu pour France 2 (96 mentions) et TF1 (56 mentions).
 
->Différences par type de chaîne : Bienn que l'hypothèse d'une différence de réponse selon le type de chaîne n'est pas été posé, on peut observer des différence entre les chaînes, qui pourrait s'avérer intéressant d'approfondir dans de futur projet:
+Différences par type de chaîne : Bienn que l'hypothèse d'une différence de réponse selon le type de chaîne n'est pas été posé, on peut observer des différence entre les chaînes, qui pourrait s'avérer intéressant d'approfondir dans de futur projet:
 Chaînes Généralistes (TF1 et France 2) : Ces chaînes montrent une réactivité immédiate et synchrone, enregistrant leur pic maximal en Septembre 2025, indiquant qu'elles ont couvert l'événement principal au moment où il se déroulait.
   M6 : Bien qu'elle soit généraliste, M6 présente un pic décalé, avec son maximum en Octobre 2025 (58 mentions). Cela pourrait indiquer que M6 a privilégié la couverture des conséquences, des réactions post-jugement ou des analyses de fond plutôt que les reportages en direct de la salle d'audience.
 
@@ -240,4 +242,15 @@ _* 2) Tidyverse et ggplot: pour la création de graphique et la visulation des d
 _* 3) R: outils utilisé afin d'avoir accès aux packages ggplot, et tidyverse._ 
 
 
->4. Discussion 
+
+---
+
+## 4. Discussion
+
+La sélection des outils pour ce projet a été guidée par un objectif principal : tester et m'approprier des outils numériques accessibles (gratuits ou fournis par l'université) afin de pouvoir les réutiliser pour mon mémoire.
+
+Pour la recherche bibliographique, j'ai constitué mon cadre théorique à l'aide d'outils complémentaires. Google Scholar a été essentiel pour identifier la littérature scientifique fondamentale grâce à sa popularité et sa couverture large des publications académiques. Eureka.cc, accessible via la bibliothèque universitaire, a été choisi pour son accès unique et structuré à la presse française, permettant de croiser le cadre théorique avec le traitement médiatique actuel. Ces moteurs de recherche ont été couplés à Zotero, indispensable pour organiser, annoter et citer mes sources de manière rigoureuse, bénéficiant d'une large communauté d'utilisateurs et d'une excellente compatibilité. En complément, Anara AI a servi d'assistant à la lecture, offrant une flexibilité précieuse pour clarifier des concepts ou explorer des liens entre les articles, tout en vérifiant systématiquement les sources primaires.
+
+Pour la collecte et l’analyse des données, la priorité était la transparence et la réplicabilité. L'outil d'archives de l’INA a été sélectionné pour la fiabilité de ses données médiatiques télévisuelles et la clarté de sa méthodologie. La visualisation des données a été entièrement réalisée avec R et les packages tidyverse et ggplot2, choisis pour leur popularité en sciences sociales, leur capacité d'adaptation (de l'exploration à la visualisation avancée) et la variété de choix en termes de graphiques.
+
+En résumé, ce projet m’a permis de valider l'utilité et la complémentarité de cette chaîne d’outils, accessible, fiable et reproductible, pour construire un début de méthodologie robuste que je pourrai appliquer à plus grande échelle dans mon mémoire.
