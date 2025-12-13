@@ -79,7 +79,7 @@ Le choix de cet outil s'est fait pour sa capacité à :
 
 
 # 3. Analyse et visualisation des données
-**3.1 Visualisation des données**
+## 3.1 Visualisation des données
 ```{r preparation_et_barres, echo=TRUE, message=FALSE, warning=FALSE, fig.height=5, fig.width=8}
 # Chargement des librairies nécessaires (Assurez-vous qu'elles sont installées manuellement au préalable dans votre console R)
 library(tidyverse)
@@ -215,7 +215,7 @@ tableau_pics
 ```
  
 
-**3.2 Analyse des données** 
+## 3.2 Analyse des données
 
 Cette section vise à interpréter les visualisations obtenues pour évaluer la validité de l'hypothèse de recherche : Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
 
@@ -236,7 +236,7 @@ Différences par type de chaîne : Bienn que l'hypothèse d'une différence de r
 Chaînes Généralistes (TF1 et France 2) : Ces chaînes montrent une réactivité immédiate et synchrone, enregistrant leur pic maximal en Septembre 2025, indiquant qu'elles ont couvert l'événement principal au moment où il se déroulait.
   M6 : Bien qu'elle soit généraliste, M6 présente un pic décalé, avec son maximum en Octobre 2025 (58 mentions). Cela pourrait indiquer que M6 a privilégié la couverture des conséquences, des réactions post-jugement ou des analyses de fond plutôt que les reportages en direct de la salle d'audience.
 
-**3.3 Outils utilisés:**
+## 3.3 Outils utilisés
 
  1) Un fichier excel: pour les données collectée sur le site de l'INA. L'utilisation d'Excel a permis d'exporter le fichier en fichier cvs afin de l'utiliser avec R.
  2) Tidyverse et ggplot: pour la création de graphique et la visulation des données. Ces package ont permis d'obtenir différentes visualisations, notemment graphique à bars, graphiques, et tableaux avec des legendes et couleur pour rendre les visualisations plus clairs. Bien que seulement trois visualisation est été réalisé dans le cadre de ce projet, les possibilités de visualisation des ces outils sont beaucoup plus large et polyvalente.
@@ -246,7 +246,7 @@ Chaînes Généralistes (TF1 et France 2) : Ces chaînes montrent une réactivit
 
 ---
 
-## 4. Discussion
+# 4. Discussion
 
 La sélection des outils pour ce projet a été guidée par un objectif principal : tester et m'approprier des outils numériques accessibles (gratuits ou fournis par l'université) afin de pouvoir les réutiliser pour mon mémoire.
 
