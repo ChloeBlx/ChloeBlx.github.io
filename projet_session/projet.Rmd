@@ -3,14 +3,14 @@ title: "Traitement médiatique du procès de Nicolas Sarkozy"
 author: "Chloé Balix"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    latex_engine: xelatex
-    toc: true
   html_document:
     df_print: paged
     toc: true
     toc_depth: 3
-    number_sections: true
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+number_sections: true
 fontsize: 12pt
 mainfont: "Times New Roman"
 geometry: margin=2.5cm
@@ -79,7 +79,7 @@ Le choix de cet outil s'est fait pour sa capacité à :
 
 
 # 3. Analyse et visualisation des données
-3.1 Visualisation des données
+**3.1 Visualisation des données**
 ```{r preparation_et_barres, echo=TRUE, message=FALSE, warning=FALSE, fig.height=5, fig.width=8}
 # Chargement des librairies nécessaires (Assurez-vous qu'elles sont installées manuellement au préalable dans votre console R)
 library(tidyverse)
@@ -214,8 +214,8 @@ tableau_pics <- data_mentions %>%
 tableau_pics 
 ```
  
-#Analyse des données
-3.2 Analyse des données 
+
+**3.2 Analyse des données** 
 
 Cette section vise à interpréter les visualisations obtenues pour évaluer la validité de l'hypothèse de recherche : Le nombre de mentions de Nicolas Sarkozy à la télévision à fortement augmenter en approche du procès et juste après le jugement.
 
@@ -236,10 +236,11 @@ Différences par type de chaîne : Bienn que l'hypothèse d'une différence de r
 Chaînes Généralistes (TF1 et France 2) : Ces chaînes montrent une réactivité immédiate et synchrone, enregistrant leur pic maximal en Septembre 2025, indiquant qu'elles ont couvert l'événement principal au moment où il se déroulait.
   M6 : Bien qu'elle soit généraliste, M6 présente un pic décalé, avec son maximum en Octobre 2025 (58 mentions). Cela pourrait indiquer que M6 a privilégié la couverture des conséquences, des réactions post-jugement ou des analyses de fond plutôt que les reportages en direct de la salle d'audience.
 
-_Outils utilisés:_ 
-_* 1) Un fichier excel: pour les données collectée sur le site de l'INA. L'utilisation d'Excel a permis d'exporter le fichier en fichier cvs afin de l'utiliser avec R._
-_* 2) Tidyverse et ggplot: pour la création de graphique et la visulation des données. Ces package ont permis d'obtenir différentes visualisations, notemment graphique à bars, graphiques, et tableaux avec des legendes et couleur pour rendre les visualisations plus clairs. Bien que seulement trois visualisation est été réalisé dans le cadre de ce projet, les possibilités de visualisation des ces outils sont beaucoup plus large et polyvalente._
-_* 3) R: outils utilisé afin d'avoir accès aux packages ggplot, et tidyverse._ 
+**3.3 Outils utilisés:**
+
+ 1) Un fichier excel: pour les données collectée sur le site de l'INA. L'utilisation d'Excel a permis d'exporter le fichier en fichier cvs afin de l'utiliser avec R.
+ 2) Tidyverse et ggplot: pour la création de graphique et la visulation des données. Ces package ont permis d'obtenir différentes visualisations, notemment graphique à bars, graphiques, et tableaux avec des legendes et couleur pour rendre les visualisations plus clairs. Bien que seulement trois visualisation est été réalisé dans le cadre de ce projet, les possibilités de visualisation des ces outils sont beaucoup plus large et polyvalente.
+ 3) R: outils utilisé afin d'avoir accès aux packages ggplot, et tidyverse.
 
 
 
